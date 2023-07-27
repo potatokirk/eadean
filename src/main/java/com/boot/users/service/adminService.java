@@ -1,0 +1,13 @@
+package com.boot.users.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.boot.users.dto.adminDto;
+
+public interface adminService {
+	public ArrayList<adminDto> loginYn(HashMap<String,String>param);
+	public void write(HashMap<String,String>param);
+	
+	
+	}

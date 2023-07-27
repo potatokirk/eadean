@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ <mappers>
+<!-- SQL파일(+경로) -->
+ 	<mapper resource="mybatis/mappers/eadeanLogin.xml"/>
+ 	<mapper resource="mybatis/mappers/kakaoLogin.xml"/>
+ 	
+ </mappers>
+</configuration>
