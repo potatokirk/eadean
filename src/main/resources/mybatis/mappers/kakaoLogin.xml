@@ -15,9 +15,9 @@
     <!-- 카카오 회원가입 -->
     <insert id="kakaoInsert" parameterType="hashmap">
      		 	insert into users
-     		 		(u_id, u_role,u_login_platform
-     		 		,u_name,u_sns_id,u_gender
-     		 		,u_authentication,u_temperature,u_created)
+     		 		(users_u_id,u_id, u_pwd, u_nickname
+     		 		,u_email,u_gender,u_phone
+     		 		,u_address)
      		 						
      		 	values((SELECT NVL(MAX(u_id), 0) + 1 FROM users)
      		 			,'USER', 'KAKAO'

@@ -13,14 +13,13 @@
 <div class="form-structor">
   <div class="signup">
     <h2 class="form-title" id="signup">Eadean</h2>
-      <form method="post" action="kakao/kakaoLogin">
+      <form method="post" action="kakaoLogin">
     <div class="form-holder">
       <input type="text" class="input11"name="u_id" class="input" placeholder="Id" />
       <input type="password" class="input11" name="u_pwd" placeholder="Password" />
     </div>
     <input type="submit" class="submit-btn" value="로그인">
   </div>
-</form>
   <div class="wrap">
     <div>
         <a class="kakao"
@@ -44,5 +43,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</form>
 </body>
 </html>
