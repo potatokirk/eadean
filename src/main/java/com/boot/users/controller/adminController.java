@@ -76,23 +76,22 @@ public class adminController {
 	
 	/********************* 일반 로그인 (아이디 비밀번호 중복검사) **************************/
 @RequestMapping("/userSignIn_yn")
-public String login_yn(@RequestParam HashMap<String, String> param //,HttpServletRequest request
-		) {
+public String login_yn(@RequestParam HashMap<String, String> param ,HttpServletRequest request) {
 	log.info("@# userSignIn_yn");
 	ArrayList<adminDto> dtos = service.loginYn(param);
+	HttpSession session = request.getSession();
 
 	if (dtos.isEmpty()) {
 		return "redirect:kakaoLogin";
 
 	} else {
 		if (param.get("u_pwd").equals(dtos.get(0).getU_pwd())) {
-	/*		param.get("u_id"),dtos.get(0).getU_id();
 			session.setAttribute("u_id", dtos.get(0).getU_id());
 			session.setAttribute("u_nickname", dtos.get(0).getU_nickname());
-			session.setAttribute("u_role", dtos.get(0).getU_role());
-			session.setAttribute("u_sns_id", param.get("u_sns_id"));
-	*/		
-			return "redirect:../shop/list";
+			//session.setAttribute("u_role", dtos.get(0).getU_role());
+			//session.setAttribute("u_sns_id", param.get("u_sns_id"));
+			
+			return "redirect:../admin/login";
 
 		} else {
 			return "/userSignIn";

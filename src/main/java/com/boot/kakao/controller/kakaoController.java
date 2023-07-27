@@ -48,7 +48,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 //        폰번호 x: 처음 가입 => u_id를 가지고 추가 가입 페이지로 이동
 	if (userInfo.getU_phone() == null) {
 		model.addAttribute("u_id", userInfo.getU_id());
-		return "/users/kakaoSignUp";
+		return "/kakao/kakaoSignUp";
 
 	} else {
 		session.invalidate();
@@ -65,7 +65,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 public String kakaoregisterOk(@RequestParam HashMap<String, String> param, HttpServletRequest request) {
 	log.info("@# kakaoSignUpOk");
 	service.kakaoSignUp(param);
-	return "redirect:/users/userSignIn";
+	return "redirect:/kakao/userSignIn";
 }
 
 //	카카오 로그아웃

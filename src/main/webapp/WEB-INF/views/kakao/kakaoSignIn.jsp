@@ -12,10 +12,10 @@
 
 <div class="form-structor">
   <div class="signup">
-    <h2 class="form-title" id="signup">ShallWeShare?</h2>
-    <form method="post" action="../users/userSignIn_yn">
+    <h2 class="form-title" id="signup">Eadean</h2>
+      <form method="post" action="kakao/kakaoLogin">
     <div class="form-holder">
-      <input type="text" class="input11"name="u_sns_id" class="input" placeholder="Id" />
+      <input type="text" class="input11"name="u_id" class="input" placeholder="Id" />
       <input type="password" class="input11" name="u_pwd" placeholder="Password" />
     </div>
     <input type="submit" class="submit-btn" value="로그인">
@@ -24,7 +24,7 @@
   <div class="wrap">
     <div>
         <a class="kakao"
-            href="https://kauth.kakao.com/oauth/authorize?client_id=97b3eb27ba108e2e3f48aa5cbed11254&redirect_uri=http://localhost:8181/shallweshare/users/kakaoLogin&response_type=code">
+            href="https://kauth.kakao.com/oauth/authorize?client_id=901ca1a5b4ae88407008da4b96f448cbc&redirect_uri=http://localhost:8282/eadean/kakaoLogin&response_type=code">
 
             <img
             src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_wide.png"

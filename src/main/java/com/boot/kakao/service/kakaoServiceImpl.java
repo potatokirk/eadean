@@ -1,3 +1,5 @@
+package com.boot.kakao.service;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -14,6 +16,9 @@ import org.springframework.stereotype.Service;
 import com.boot.kakao.dao.kakaoDao;
 import com.boot.kakao.dto.kakaoDto;
 import com.boot.kakao.kakao.MemberRepository;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -76,6 +81,7 @@ public class kakaoServiceImpl implements kakaoService {
 	            System.out.println("response body : " + result);
 
 	            JsonParser parser = new JsonParser();
+	           
 	            JsonElement element = parser.parse(result);
 
 	            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();

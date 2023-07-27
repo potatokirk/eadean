@@ -12,7 +12,51 @@
 		select u_pwd from users where u_id=#{u_id}
 		</select>
     
+    <!-- 카카오 회원가입 -->
+    <insert id="kakaoInsert" parameterType="hashmap">
+     		 	insert into users
+     		 		(u_id, u_role,u_login_platform
+     		 		,u_name,u_sns_id,u_gender
+     		 		,u_authentication,u_temperature,u_created)
+     		 						
+     		 	values((SELECT NVL(MAX(u_id), 0) + 1 FROM users)
+     		 			,'USER', 'KAKAO'
+     		 			,#{name,jdbcType=VARCHAR}
+     		 			,#{id,jdbcType=VARCHAR}
+     		 			,#{gender,jdbcType=VARCHAR}
+     		 			,'T','30',SYSDATE)
+     </insert> 	 	
+     
+<!-- 카카오 추가 회원가입 (업데이트로 값 넣어줌) -->
+    <update id="kakaoSignUp" parameterType="hashmap">
+        UPDATE users
+        SET
+        u_email = #{u_email},
+        u_nickname = #{u_nickname},
+        u_phoneNum =  #{u_phoneNum},
+        u_bank_account = #{u_bank_account}
+        WHERE u_id = #{u_id,jdbcType=VARCHAR}
+    </update>
     
+    
+<!--     카카오 회원 수정 -->
+    <update id="kakaoUserModify" parameterType="hashmap">
+        UPDATE users
+        SET
+        u_email = #{u_email,jdbcType=VARCHAR},
+        u_nickname = #{u_nickname,jdbcType=VARCHAR},
+        u_phoneNum = #{u_phoneNum,jdbcType=VARCHAR},
+        u_bank_account = #{u_bank_account,jdbcType=VARCHAR}
+        WHERE u_id = #{u_id,jdbcType=VARCHAR}
+    </update>
+    
+    
+        <!-- 카카오 유저 정보 찾기 -->
+    <select id="kakaoUserSearch" resultType="com.boot.kakao.dto.kakaoDto" parameterType="hashmap">
+        SELECT *
+        FROM users
+        WHERE u_id=#{u_id,jdbcType=VARCHAR}
+    </select>
     
     
     
