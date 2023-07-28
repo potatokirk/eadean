@@ -13,7 +13,7 @@ public class kakaoDto {
 	private int users_u_id;
 	private String u_id;
 	private String u_pwd;
-	private String u_nickname;
+	private String u_nick;
 	private String u_email;
 	private String u_gender;
 	private String u_phone;

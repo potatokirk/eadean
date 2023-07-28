@@ -23,11 +23,13 @@ public class adminController {
 	@Autowired
 	private adminService service;
 	
+	/*
 	@RequestMapping("/")
 	public String home() {
 		log.info("@# 카카오로그인 화면" );
-		return"admin/kakakoSignUp";
+		return"kakao/kakakoSignIp";
 	}
+	*/
 	
 	@RequestMapping("/login")
 	public String login() {

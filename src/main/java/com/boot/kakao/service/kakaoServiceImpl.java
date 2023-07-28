@@ -57,6 +57,7 @@ public class kakaoServiceImpl implements kakaoService {
 	@Override
 	public kakaoDto getUserInfo(String access_Token) {
 		 HashMap<String, Object> userInfo = new HashMap<String, Object>();
+		 log.info("@#서비스로 접속 "+userInfo);
 	        
 	        String reqURL = "https://kapi.kakao.com/v2/user/me";
 	        try {

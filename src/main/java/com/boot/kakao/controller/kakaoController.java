@@ -30,7 +30,6 @@ public class kakaoController {
 	@Autowired
 	private HttpSession session;
 	
-	
 	/******************************카카오 로그인 **********************/
 	// 카카오 로그인
 //	토큰값을 넣어서 유저정보 확인: 회원가입 되어있으면 로그인 성공 페이지 / 가입 X면 추가 회원가입 페이지
@@ -53,10 +52,10 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 	} else {
 		session.invalidate();
 		session.setAttribute("u_id", userInfo.getU_id());
-		session.setAttribute("u_nickname", userInfo.getU_nickname());
+		session.setAttribute("u_nick", userInfo.getU_nick());
 		session.setAttribute("access_Token", access_Token);
 		session.setAttribute("u_role", userInfo.getU_role());
-		return "redirect:../shop/list";
+		return "redirect:../admin/login";
 	}
 }
 
