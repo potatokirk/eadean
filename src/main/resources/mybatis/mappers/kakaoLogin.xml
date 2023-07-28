@@ -15,16 +15,21 @@
     <!-- 카카오 회원가입 -->
     <insert id="kakaoInsert" parameterType="hashmap">
      		 	insert into users
-     		 		(users_u_id,u_id, u_pwd, u_nickname
-     		 		,u_email,u_gender,u_phone
+     		 		(u_id
+                    ,u_pwd
+                    ,u_nick
+     		 		,u_email
+                    ,u_gender
+                    ,u_phone
      		 		,u_address)
      		 						
-     		 	values((SELECT NVL(MAX(u_id), 0) + 1 FROM users)
-     		 			,'USER', 'KAKAO'
-     		 			,#{name,jdbcType=VARCHAR}
-     		 			,#{id,jdbcType=VARCHAR}
-     		 			,#{gender,jdbcType=VARCHAR}
-     		 			,'T','30',SYSDATE)
+     		 	values(u_id = #{u_id}
+                    ,u_pwd = #{u_pwd}
+                    ,u_nick = #{u_nick}
+     		 		,u_email = #{u_email}
+                    ,u_gender = #{u_gender}
+                    ,u_phone = #{u_phone} 
+     		 		,u_address = #{u_address})
      </insert> 	 	
      
 <!-- 카카오 추가 회원가입 (업데이트로 값 넣어줌) -->
@@ -32,10 +37,11 @@
         UPDATE users
         SET
         u_email = #{u_email},
-        u_nickname = #{u_nickname},
-        u_phoneNum =  #{u_phoneNum},
-        u_bank_account = #{u_bank_account}
-        WHERE u_id = #{u_id,jdbcType=VARCHAR}
+        u_nick = #{u_nick},
+        u_phone =  #{u_phone},
+        u_address = #{u_address}
+        
+        WHERE u_id = #{u_id}
     </update>
     
     
@@ -44,9 +50,9 @@
         UPDATE users
         SET
         u_email = #{u_email,jdbcType=VARCHAR},
-        u_nickname = #{u_nickname,jdbcType=VARCHAR},
-        u_phoneNum = #{u_phoneNum,jdbcType=VARCHAR},
-        u_bank_account = #{u_bank_account,jdbcType=VARCHAR}
+        u_nick = #{u_nick,jdbcType=VARCHAR},
+        u_phone = #{u_phone,jdbcType=VARCHAR}
+        
         WHERE u_id = #{u_id,jdbcType=VARCHAR}
     </update>
     
