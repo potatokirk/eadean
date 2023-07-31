@@ -13,7 +13,7 @@
 <div class="form-structor">
   <div class="signup">
     <h2 class="form-title" id="signup">Eadean</h2>
-      <form method="post" action="kakaoLogin">
+      <form method="post" action="userSignIn_yn">
     <div class="form-holder">
       <input type="text" class="input11"name="u_id" class="input" placeholder="Id" />
       <input type="password" class="input11" name="u_pwd" placeholder="Password" />
@@ -23,7 +23,10 @@
   <div class="wrap">
     <div>
         <!-- KAKAO REST API 값넣기  -->
-        <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?client_id=01ca1a5b4ae88407008da4b96f448cbc&redirect_uri=http://localhost:8282/kakaoLogin&response_type=code">
+        <a class="kakao"
+         href="https://kauth.kakao.com/oauth/authorize?&response_type=code&client_id=01ca1a5b4ae88407008da4b96f448cbc
+         &redirect_uri=http://localhost:8282/kakao/kakaoLogin
+         ">
 
             <img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_wide.png"
             style="height: 60px">
@@ -40,6 +43,7 @@
     </div>
     
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
 </body>
 </form>

@@ -31,6 +31,15 @@ public class kakaoController {
 	private HttpSession session;
 	
 	/******************************카카오 로그인 **********************/
+	
+	// 로그인 페이지로 이동
+		@RequestMapping("/kakaoSigIn")
+		public String login() {
+			log.info("@# kakaoSignIn");
+			return "kakao/kakaoSignIn";
+		}
+	
+	
 	// 카카오 로그인
 //	토큰값을 넣어서 유저정보 확인: 회원가입 되어있으면 로그인 성공 페이지 / 가입 X면 추가 회원가입 페이지
 @RequestMapping(value = "/kakaoLogin", method = RequestMethod.GET)
