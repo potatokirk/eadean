@@ -56,7 +56,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 //        폰번호 x: 처음 가입 => u_id를 가지고 추가 가입 페이지로 이동
 	if (userInfo.getU_phone() == null) {
 		model.addAttribute("u_id", userInfo.getU_id());
-		return "/kakao/kakaoSignUp";
+		return "/kakao/kakaoSign";
 
 	} else {
 		session.invalidate();

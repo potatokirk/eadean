@@ -125,13 +125,7 @@
     </main>
 </div>
 
-<footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; GREENBOOK</p>
-    <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Home</a></li>
-        <li class="list-inline-item"><a href="#">Login</a></li>
-    </ul>
-</footer>
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     // 우편번호 찾기 찾기 화면을 넣을 element

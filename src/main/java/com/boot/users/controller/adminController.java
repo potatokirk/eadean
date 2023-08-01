@@ -23,13 +23,13 @@ public class adminController {
 	@Autowired
 	private adminService service;
 	
-	/*
+	
 	@RequestMapping("/")
 	public String home() {
-		log.info("@# 카카오로그인 화면" );
-		return"kakao/kakakoSignIp";
+		log.info("@# 메인 화면" );
+		return"mainPage";
 	}
-	*/
+
 	
 	@RequestMapping("/login")
 	public String login() {
@@ -100,7 +100,6 @@ public String login_yn(@RequestParam HashMap<String, String> param ,HttpServletR
 		}
 	}
 }
-	/********************* 카카오 로그인 **************************/
 
 
 

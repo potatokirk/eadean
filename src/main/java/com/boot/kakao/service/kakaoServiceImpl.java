@@ -206,7 +206,7 @@ public String getAccessToken(String authorize_code) {
 		
 		sb.append("grant_type=authorization_code");
 		sb.append("&client_id=01ca1a5b4ae88407008da4b96f448cbc"); // REST_API키 
-		sb.append("&redirect_uri=http://localhost:8282/"); // REDIRECT_URI
+		sb.append("&redirect_uri=http://localhost:8282/kakaoLogin"); // REDIRECT_URI
 		sb.append("&code=" + authorize_code);
 		bw.write(sb.toString());
 		bw.flush();
