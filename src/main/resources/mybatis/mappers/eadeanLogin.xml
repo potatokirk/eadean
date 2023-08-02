@@ -14,6 +14,6 @@
     
     
   <insert id="write" parameterType="hashmap">
-		insert into users (u_id,u_pwd,u_nick) values(#{u_id}, #{u_pwd}, #{u_nick})
+		insert into users (u_id,u_pwd,u_nick,u_email) values(#{u_id}, #{u_pwd}, #{u_nick},#{u_email})
 	</insert>
     </mapper>

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,30 +32,34 @@ public class adminController {
 		return"mainPage";
 	}
 
-	
+	//로그인 페이지 
 	@RequestMapping("/login")
 	public String login() {
-		
+		log.info("login");
 		return "admin/login";
 	}
 	
+	//일반 로그인 
 	@RequestMapping("/loginyn")
-	public String loginyn(@RequestParam HashMap<String,String>param) {
+	public ResponseEntity<Integer> loginyn(@RequestParam HashMap<String,String>param) {
 		log.info("@#loginyn"+param);
 		
 		ArrayList<adminDto> dtos = service.loginYn(param);
+	//	HttpSession session = request.getSession();
 		log.info("@#loginyn 나옴"+dtos);
 		
 		if(dtos.isEmpty()) {
-			return "admin/login";
+			return ResponseEntity.status(HttpStatus.OK).body(500); 
 		}else {
 			if(param.get("u_pwd").equals(dtos.get(0).getU_pwd())) {
-				return "admin/login_ok";
+				
+				return ResponseEntity.status(HttpStatus.OK).body(200);
 			}else {
-					return "admin/login";
+				return ResponseEntity.status(HttpStatus.OK).body(400); 
 				}
 			}
 		}
+		
 	@RequestMapping("/login_ok")
 	public String login_ok() {
 		log.info("@#login_ok");
@@ -100,6 +106,14 @@ public String login_yn(@RequestParam HashMap<String, String> param ,HttpServletR
 		}
 	}
 }
+/********************* 로그아웃 **************************/
+@RequestMapping("/logout")
+public String logout(HttpSession session) {
+	log.info("@#logout session" + session);
+	service.logout(session);
+	return "/";
+}
+
 
 
 

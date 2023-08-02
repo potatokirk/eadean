@@ -25,11 +25,14 @@
 			</tr>
 
 			<tr height="30">
-				<td width="80">이름</td>
+				<td width="80">별명</td>
 				<td><input type="text" size="20" name="u_name"></td>
 			</tr>
 
-			<tr>
+			<tr height="30">
+				<td width="80">이메일</td>
+				<td><input type="text" size="20" name="u_email"></td>
+			</tr>
 
 				<td colspan="2">
 				<input type="submit" value="등록">

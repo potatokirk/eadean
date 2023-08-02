@@ -32,7 +32,7 @@ public class kakaoServiceImpl implements kakaoService {
 	@Autowired
 	private kakaoDao dao;
 
-//	kakao에서 액세스 토큰값 얻어오기
+
 
 //	첫 가입(추가정보가 없을 경우) 추가가입 (update로)
 	@Override
@@ -52,12 +52,72 @@ public class kakaoServiceImpl implements kakaoService {
 		ArrayList<kakaoDto> dtos= dao.kakaoUserSearch(param);
 		return dtos;
 	}
+//kakao에서 엑세스 토큰값 가져오기 
+	@Override
+	public String getAccessToken(String authorize_code) {
+		String access_Token = "";
+		String refresh_Token = "";
+		String reqURL = "https://kauth.kakao.com/oauth/token";
+		
+		try {
+			URL url = new URL(reqURL);
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			//    POST 요청을 위해 기본값이 false인 setDoOutput을 true로
+			
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+			
+			//    POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append("grant_type=authorization_code");
+			sb.append("&client_id=01ca1a5b4ae88407008da4b96f448cbc"); // REST_API키 
+			sb.append("&redirect_uri=http://localhost:8282/kakaoLogin"); // REDIRECT_URI
+			sb.append("&code=" + authorize_code);
+			bw.write(sb.toString());
+			bw.flush();
+			
+//			    결과 코드가 200이라면 성공
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+			
+			//    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line = "";
+			String result = "";
+			
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println("response body : " + result);
+			
+			//    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+			
+			access_Token = element.getAsJsonObject().get("access_token").getAsString();
+			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
+			
+			System.out.println("access_token : " + access_Token);
+			System.out.println("refresh_token : " + refresh_Token);
+			
+			br.close();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return access_Token;
+	}
 	
 	//	액세스 토큰을 이용해서 유저 정보 불러오기
 	@Override
 	public kakaoDto getUserInfo(String access_Token) {
 		 HashMap<String, Object> userInfo = new HashMap<String, Object>();
-		 log.info("@#서비스로 접속 "+userInfo);
+		 log.info("@#userInfo service "+userInfo);
 	        
 	        String reqURL = "https://kapi.kakao.com/v2/user/me";
 	        try {
@@ -183,66 +243,6 @@ public class kakaoServiceImpl implements kakaoService {
 	}
 
 
-
-@Override
-public String getAccessToken(String authorize_code) {
-	String access_Token = "";
-	String refresh_Token = "";
-	String reqURL = "https://kauth.kakao.com/oauth/token";
-	
-	try {
-		URL url = new URL(reqURL);
-		
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		
-		//    POST 요청을 위해 기본값이 false인 setDoOutput을 true로
-		
-		conn.setRequestMethod("POST");
-		conn.setDoOutput(true);
-		
-		//    POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append("grant_type=authorization_code");
-		sb.append("&client_id=01ca1a5b4ae88407008da4b96f448cbc"); // REST_API키 
-		sb.append("&redirect_uri=http://localhost:8282/kakaoLogin"); // REDIRECT_URI
-		sb.append("&code=" + authorize_code);
-		bw.write(sb.toString());
-		bw.flush();
-		
-//			    결과 코드가 200이라면 성공
-		int responseCode = conn.getResponseCode();
-		System.out.println("responseCode : " + responseCode);
-		
-		//    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
-		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		String line = "";
-		String result = "";
-		
-		while ((line = br.readLine()) != null) {
-			result += line;
-		}
-		System.out.println("response body : " + result);
-		
-		//    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
-		JsonParser parser = new JsonParser();
-		JsonElement element = parser.parse(result);
-		
-		access_Token = element.getAsJsonObject().get("access_token").getAsString();
-		refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-		
-		System.out.println("access_token : " + access_Token);
-		System.out.println("refresh_token : " + refresh_Token);
-		
-		br.close();
-		bw.close();
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-	
-	return access_Token;
-}
 
 @Override
 public void userDel(HashMap<String, String> param) {

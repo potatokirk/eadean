@@ -8,10 +8,7 @@
 <%
 request.setCharacterEncoding("utf-8");
 %>
-<style>
-@import
-'../css/css_mainPage.css'
-</style>
+<style>@import'../css/css_mainPage.css'</style>
 <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 <link rel="stylesheet"
 	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
@@ -57,28 +54,16 @@ request.setCharacterEncoding("utf-8");
             const slider = document.querySelector('.slider ul');
             const slides = document.querySelectorAll('.slider ul li');
             const slideWidth = slides[0].clientWidth;
+            let currentIndex = 0;
 
-            // 첫 번째 슬라이드를 마지막으로 이동시키는 애니메이션을 추가합니다.
-            slider.style.transition = 'transform 1s ease-in-out';
-            slider.style.transform = `translateX(${-slideWidth}px)`;
+            function moveToNextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                slider.style.transition = 'transform 1s ease-in-out';
+                slider.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+            }
 
             // 5초마다 자동으로 넘어가도록 설정합니다.
-            setInterval(() => {
-                // 현재 슬라이더의 위치를 가져옵니다.
-                const currentTranslate = parseInt(slider.style.transform.split('(')[1]) || 0;
-
-                // 다음 슬라이드로 이동시킵니다.
-                slider.style.transition = 'transform 1s ease-in-out';
-                slider.style.transform = `translateX(${currentTranslate - slideWidth}px)`;
-
-                // 슬라이더의 마지막 슬라이드일 경우, 첫 번째 슬라이드로 되돌립니다.
-                if (currentTranslate == -(slides.length - 1) * slideWidth) {
-                    setTimeout(() => {
-                        slider.style.transition = 'none';
-                        slider.style.transform = `translateX(0)`;
-                    }, 1000);
-                }
-            }, 5000);
+            setInterval(moveToNextSlide, 5000);
         }
 
         // 문서가 로드되면 슬라이드 함수를 호출합니다.
@@ -88,9 +73,7 @@ request.setCharacterEncoding("utf-8");
 </head>
 <body>
 	<div id="wrapper">
-		<header>
-			<%@include file="../views/header.jsp"%>
-		</header>
+		<header><%@include file="../views/header.jsp"%></header>
 		<main>
 			<aside>
 				<ul class="category">
@@ -806,29 +789,7 @@ request.setCharacterEncoding("utf-8");
 				</section>
 			</section>
 		</main>
-		<footer>
-			<ul>
-				<li><a href="#">회사소개</a></li>
-				<li><a href="#">서비스이용약관</a></li>
-				<li><a href="#">개인정보처리방침</a></li>
-				<li><a href="#">전자금융거래약관</a></li>
-			</ul>
-			<div>
-				<p>
-					<img src="./images/main.png" alt="푸터로고" width="220" height="75">
-				</p>
-				<p>
-					<strong>(주)EADEAN</strong> <br> 부산시 수영구 어딘가의 어딘가 <br>
-					대표이사 : 박기태 <br> 사업자등록번호 : <br> 통신판매업신고 :
-				</p>
-				<p>
-					<strong>고객센터</strong> <br> Tel : 1234-5678 (평일 09:00~18:00) <br>
-					스마일클럽/SVIP 전용 : 1522-5700 (365일 09:00~18:00) <br> 부산광역시 부산진구
-					중앙대로 712 수양빌딩 8층 <br> Fax : 051-123-4567 | Mail :
-					rlxoa456@hanmail.net <br>
-				</p>
-			</div>
-		</footer>
+		<footer><%@include file="../views/footer.jsp"%></footer>
 		<button type="button" id="top">상단이동</button>
 	</div>
 

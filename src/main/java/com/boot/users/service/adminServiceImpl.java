@@ -3,6 +3,8 @@ package com.boot.users.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,10 @@ public class adminServiceImpl implements adminService{
 	public void write(HashMap<String, String> param) {
 		dao.write(param);
 		
+	}
+	@Override
+	public void logout(HttpSession session) {
+		 session.invalidate();
 	}
 	
 }

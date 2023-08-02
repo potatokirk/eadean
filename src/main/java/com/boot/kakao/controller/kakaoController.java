@@ -56,7 +56,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 //        폰번호 x: 처음 가입 => u_id를 가지고 추가 가입 페이지로 이동
 	if (userInfo.getU_phone() == null) {
 		model.addAttribute("u_id", userInfo.getU_id());
-		return "/kakao/kakaoSign";
+		return "../admin/login_ok";
 
 	} else {
 		session.invalidate();
@@ -64,7 +64,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 		session.setAttribute("u_nick", userInfo.getU_nick());
 		session.setAttribute("access_Token", access_Token);
 		session.setAttribute("u_role", userInfo.getU_role());
-		return "redirect:../admin/login";
+		return "/";
 	}
 }
 
