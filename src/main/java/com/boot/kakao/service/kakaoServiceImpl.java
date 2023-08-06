@@ -52,9 +52,12 @@ public class kakaoServiceImpl implements kakaoService {
 		ArrayList<kakaoDto> dtos= dao.kakaoUserSearch(param);
 		return dtos;
 	}
+	
+	
 //kakao에서 엑세스 토큰값 가져오기 
 	@Override
 	public String getAccessToken(String authorize_code) {
+		log.info("@# getAccessToken :"+authorize_code);
 		String access_Token = "";
 		String refresh_Token = "";
 		String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -117,7 +120,7 @@ public class kakaoServiceImpl implements kakaoService {
 	@Override
 	public kakaoDto getUserInfo(String access_Token) {
 		 HashMap<String, Object> userInfo = new HashMap<String, Object>();
-		 log.info("@#userInfo service "+userInfo);
+		 log.info("@#userInfo service :"+userInfo);
 	        
 	        String reqURL = "https://kapi.kakao.com/v2/user/me";
 	        try {
@@ -150,18 +153,20 @@ public class kakaoServiceImpl implements kakaoService {
 
 	            String name = properties.getAsJsonObject().get("nickname").getAsString();
 	            String id = kakao_account.getAsJsonObject().get("email").getAsString();
-	            String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
-	            System.out.println("@### ServeiceImpl gender1===>>"+ gender);
+	           // String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
+	        //    System.out.println("@### ServeiceImpl gender1===>>"+ gender);
 	            
+	         /*
 	            if(gender.equals("female")) {
 	            	gender="F";
 	            }else if(gender.equals("male")) {
 	            	gender="M";
 	            }
 	            System.out.println("@### gender===>>"+ gender);
+	            */
 	            userInfo.put("name", name);
 	            userInfo.put("id", id);
-	            userInfo.put("gender", gender);
+	            //userInfo.put("gender", gender);
 
 	        } catch (IOException e) {
 	            e.printStackTrace();

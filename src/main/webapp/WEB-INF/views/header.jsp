@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +18,26 @@ request.setCharacterEncoding("utf-8");
 	 <header>
             <div class="top">
                 <div>
-                    <a href="kakaoSigIn">로그인</a>
+   			
+								<c:choose>
+										<c:when test="${sessionScope.u_id eq null }">
+											<a href="kakaoSignIn">로그인</a>
+										</c:when>
+										<c:otherwise>
+											<c:choose>
+												<c:when test="${sessionScope.access_Token eq null }">
+													<a class="nav-link " href="../users/logout">로그아웃</a>
+												</c:when>
+												<c:otherwise>
+													<a class="nav-link " href="../users/kakaologout">로그아웃</a>
+												</c:otherwise>
+											</c:choose>
+										</c:otherwise>
+									</c:choose>
+									
+									
+							            
+   
                     <a href="">회원가입</a>
                     <a href="">마이페이지</a>
                     <a href="">

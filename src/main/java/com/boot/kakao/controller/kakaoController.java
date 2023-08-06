@@ -33,7 +33,7 @@ public class kakaoController {
 	/******************************카카오 로그인 **********************/
 	
 	// 로그인 페이지로 이동
-		@RequestMapping("/kakaoSigIn")
+		@RequestMapping("/kakaoSignIn")
 		public String login() {
 			log.info("@# kakaoSignIn");
 			return "kakao/kakaoSignIn";
@@ -45,9 +45,9 @@ public class kakaoController {
 @RequestMapping(value = "/kakaoLogin", method = RequestMethod.GET)
 public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model model,
 		HttpServletRequest request) throws Exception {
-	System.out.println("code:" + code);
+	System.out.println("@# kakaoLogin code:" + code);
 	String access_Token = service.getAccessToken(code);
-	log.info(access_Token);
+	log.info("@# kakaoLogin access_Token:"+access_Token);
 
 //        유저 정보 받아와서 가입까지 
 	kakaoDto userInfo = service.getUserInfo(access_Token);
@@ -56,7 +56,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 //        폰번호 x: 처음 가입 => u_id를 가지고 추가 가입 페이지로 이동
 	if (userInfo.getU_phone() == null) {
 		model.addAttribute("u_id", userInfo.getU_id());
-		return "../admin/login_ok";
+		return "../kakao/kakaoSignUp";
 
 	} else {
 		session.invalidate();
@@ -81,7 +81,7 @@ public String kakaoregisterOk(@RequestParam HashMap<String, String> param, HttpS
 public String kakaologout(HttpSession session) {
 	service.kakaologout((String) session.getAttribute("access_Token"));
 	session.invalidate();
-	return "redirect:/shop/list";
+	return "redirect:/admin/login_ok";
 }
 
 //	카카오 회원 탈퇴 (연결 끊기)

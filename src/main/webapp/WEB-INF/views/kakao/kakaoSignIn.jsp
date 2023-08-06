@@ -17,7 +17,7 @@ request.setCharacterEncoding("utf-8");
 <div class="form-structor">
   <div class="signup">
     <h2 class="form-title" id="signup">Eadean</h2><br>
-      <form method="post" action="kakaoLogin">
+      <form method="post" action="kakaoLoIn">
     <div class="form-holder">
       <input type="text" class="input11"name="u_id" class="input" placeholder="Id" /><br>
       <h1></h1><br>
