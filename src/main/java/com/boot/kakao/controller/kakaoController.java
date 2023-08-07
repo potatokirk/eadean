@@ -40,7 +40,8 @@ public class kakaoController {
 		}
 	
 	
-	// 카카오 로그인
+		/********************* 카카오 로그인 **************************/
+
 //	토큰값을 넣어서 유저정보 확인: 회원가입 되어있으면 로그인 성공 페이지 / 가입 X면 추가 회원가입 페이지
 @RequestMapping(value = "/kakaoLogin", method = RequestMethod.GET)
 public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model model,
@@ -73,7 +74,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 public String kakaoregisterOk(@RequestParam HashMap<String, String> param, HttpServletRequest request) {
 	log.info("@# kakaoSignUpOk");
 	service.kakaoSignUp(param);
-	return "redirect:/kakao/userSignIn";
+	return "redirect:/kakao/kakaoSignIn";
 }
 
 //	카카오 로그아웃

@@ -7,31 +7,30 @@
 <select id="findKakao" resultType="com.boot.kakao.dto.kakaoDto" parameterType="hashmap">
 			select * from users 
 		where u_name=#{name,jdbcType=VARCHAR} 
-				and u_email=#{id,jdbcType=VARCHAR}			
+				and u_sns_id=#{id,jdbcType=VARCHAR}			
 	</select>
     
-    <select id="kakaoLogin"  parameterType="hashmap" resultType="com.boot.kakao.dto.kakaoDto">
-		select u_pwd from users where u_id=#{u_id}
-		</select>
-    
+   
+  
     <!-- 카카오 회원가입 -->
     <insert id="kakaoInsert" parameterType="hashmap">
-     		 	insert into users
-     		 		(u_id
-                    ,u_pwd
-                    ,u_nick
-     		 		,u_email
-                    ,u_gender
-                    ,u_phone
-     		 		,u_address)
-     		 						
-     		 	values(u_id = #{u_id}
-                    ,u_pwd = #{u_pwd}
-                    ,u_nick = #{u_nick}
-     		 		,u_email = #{u_email}
-                    ,u_gender = #{u_gender}
-                    ,u_phone = #{u_phone} 
-     		 		,u_address = #{u_address})
+     		 	 insert into users 
+     		 	 (u_id
+     		 	 ,u_pwd
+     		 	 ,u_login_platform
+     		 	 ,u_name
+     		 	 ,u_sns_id
+     		 	 ,u_created
+     		 	 )
+    				values 
+    				(
+    			'USER'
+    			,u_pwd=#{u_pwd}	
+    			,'KAKAO'
+    			,#{name,jdbcType=VARCHAR}
+    			,#{id,jdbcType=VARCHAR}
+    			, now()
+    			)
      </insert> 	 	
      
 <!-- 카카오 추가 회원가입 (업데이트로 값 넣어줌) -->
@@ -43,7 +42,7 @@
         u_phone =  #{u_phone},
         u_address = #{u_address}
         
-        WHERE u_id = #{u_id}
+        WHERE u_id = #{u_id,jdbcType=VARCHAR}
     </update>
     
     

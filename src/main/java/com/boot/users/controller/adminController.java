@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.users.dto.adminDto;
 import com.boot.users.service.adminService;
@@ -24,6 +25,7 @@ public class adminController {
 
 	@Autowired
 	private adminService service;
+	
 	
 	
 	@RequestMapping("/")
@@ -39,7 +41,8 @@ public class adminController {
 		return "admin/login";
 	}
 	
-	//일반 로그인 
+	/********************* 일반 로그인 **************************/
+
 	@RequestMapping("/loginyn")
 	public ResponseEntity<Integer> loginyn(@RequestParam HashMap<String,String>param) {
 		log.info("@#loginyn"+param);
@@ -82,30 +85,6 @@ public class adminController {
 		return "redirect:login";
 	}
 	
-	/********************* 일반 로그인 (아이디 비밀번호 중복검사) **************************/
-@RequestMapping("/userSignIn_yn")
-public String login_yn(@RequestParam HashMap<String, String> param ,HttpServletRequest request) {
-	log.info("@# userSignIn_yn");
-	ArrayList<adminDto> dtos = service.loginYn(param);
-	HttpSession session = request.getSession();
-
-	if (dtos.isEmpty()) {
-		return "redirect:kakaoLogin";
-
-	} else {
-		if (param.get("u_pwd").equals(dtos.get(0).getU_pwd())) {
-			session.setAttribute("u_id", dtos.get(0).getU_id());
-			session.setAttribute("u_nickname", dtos.get(0).getU_nickname());
-			//session.setAttribute("u_role", dtos.get(0).getU_role());
-			//session.setAttribute("u_sns_id", param.get("u_sns_id"));
-			
-			return "redirect:../admin/login";
-
-		} else {
-			return "/userSignIn";
-		}
-	}
-}
 /********************* 로그아웃 **************************/
 @RequestMapping("/logout")
 public String logout(HttpSession session) {
@@ -114,9 +93,27 @@ public String logout(HttpSession session) {
 	return "/";
 }
 
+//닉네임 중복 체크
+@RequestMapping("nickChk")
+public @ResponseBody int nickChk(@RequestParam("u_nickname") String u_nick){
+	return service.nickChk(u_nick);
+}
+//아이디 중복 체크
+@RequestMapping("idChk")
+public @ResponseBody int idChk(@RequestParam("u_sns_id") String u_sns_id) {
+return service.idChk(u_sns_id);
+}
 
-
-
+//일반 회원가입 로직
+@RequestMapping("/signUpOk")
+public String registerOk(@RequestParam HashMap<String, String> param, HttpServletRequest request) {
+log.info("@# signUpOk");
+service.signUp(param);
+//	return "redirect:/users/main";
+//	return "/users/main";
+log.info("@#회원가입 로직 Referer" + request.getHeader("Referer"));
+return "redirect:/users/userSignIn";
+}
 
 
 

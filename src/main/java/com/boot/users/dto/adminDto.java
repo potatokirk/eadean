@@ -1,5 +1,7 @@
 package com.boot.users.dto;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class adminDto {
-public String u_id;
-public String u_pwd;
-public String u_nickname;
-public String u_email;
-public String u_gender;
+	private String u_id;
+	private String u_pwd;
+	private String u_nick;
+	private String u_email;
+	private String u_gender;
+	private String u_sns_id;
+	private Timestamp u_created;
 }

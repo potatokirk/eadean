@@ -1,5 +1,7 @@
 package com.boot.kakao.dto;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,8 @@ public class kakaoDto {
 	private String u_gender;
 	private String u_phone;
 	private String u_address;
+	private String u_sns_id;
+	private Timestamp u_created;
 	
 	private String u_name;	
 	private String u_login_platform;
