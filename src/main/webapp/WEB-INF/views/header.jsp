@@ -48,7 +48,7 @@ request.setCharacterEncoding("utf-8");
             </div>
             <div class="logo">
                 <div>
-                    <a href="#">
+                    <a href="/">
                         <img src="./images/main.png" alt="헤더로고" width="220" height="75">EADEAN
                     </a>
                     <form action="#">

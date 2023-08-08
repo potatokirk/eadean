@@ -6,6 +6,9 @@
 <html>
 <meta charset="UTF-8">
 <title>카카오 추가 회원가입</title>
+<style>
+@import'../css/kakao/css_kakaosignUp.css'
+</style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 	
   <script type="text/javascript">

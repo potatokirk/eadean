@@ -11,7 +11,8 @@ import com.boot.kakao.dto.kakaoDto;
 
 @Repository
 	public class MemberRepository {
-		// mapper를 호출하기 위한 클래스 주입.
+		
+	// mapper를 호출하기 위한 클래스 주입.
 			@Autowired
 			private SqlSessionTemplate sql;
 			
@@ -25,6 +26,9 @@ import com.boot.kakao.dto.kakaoDto;
 				System.out.println("nickname:"+userInfo.get("nickname"));
 				System.out.println("email:"+userInfo.get("email"));
 				System.out.println("gender:"+userInfo.get("gender"));
+				System.out.println("name:"+userInfo.get("name"));
+				System.out.println("id:"+userInfo.get("id"));
+				
 				return sql.selectOne("findKakao", userInfo);
 			}
 			

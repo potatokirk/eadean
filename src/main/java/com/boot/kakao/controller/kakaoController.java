@@ -49,6 +49,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 	System.out.println("@# kakaoLogin code:" + code);
 	String access_Token = service.getAccessToken(code);
 	log.info("@# kakaoLogin access_Token:"+access_Token);
+	
 
 //        유저 정보 받아와서 가입까지 
 	kakaoDto userInfo = service.getUserInfo(access_Token);
@@ -56,10 +57,12 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 
 //        폰번호 x: 처음 가입 => u_id를 가지고 추가 가입 페이지로 이동
 	if (userInfo.getU_phone() == null) {
+		log.info("컨트롤 kakaoLogin if ");
 		model.addAttribute("u_id", userInfo.getU_id());
-		return "../kakao/kakaoSignUp";
+		return "/kakao/kakaoSignUp";
 
 	} else {
+		log.info("컨트롤 kakaoLogin else ");
 		session.invalidate();
 		session.setAttribute("u_id", userInfo.getU_id());
 		session.setAttribute("u_nick", userInfo.getU_nick());

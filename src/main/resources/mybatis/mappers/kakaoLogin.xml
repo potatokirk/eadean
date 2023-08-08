@@ -15,7 +15,8 @@
     <!-- 카카오 회원가입 -->
     <insert id="kakaoInsert" parameterType="hashmap">
      		 	 insert into users 
-     		 	 (u_id
+     		 	 (
+     		 	  u_id
      		 	 ,u_pwd
      		 	 ,u_login_platform
      		 	 ,u_name

@@ -8,7 +8,9 @@
 <%
 request.setCharacterEncoding("utf-8");
 %>
-<style>@import'../css/kakao/css_kakaoSignIn.css'</style>
+<style>
+@import'../css/kakao/css_kakaoSignIn.css'
+</style>
 </head>
 <body>
 <header><%@include file="../header.jsp"%></header>
@@ -59,7 +61,8 @@ request.setCharacterEncoding("utf-8");
                 // 값이 존재하면 loginyn으로 보내기
                 $.ajax({
                     type: "POST",
-                    url: "loginyn",  // 여기에 실제로 데이터를 처리하는 서버 엔드포인트를 지정하세요
+                    // 실제로 데이터를 처리하는 서버 엔드포인
+                    url: "loginyn",  
                     data: {
                         u_id: userId,
                         u_pwd: userPwd
@@ -83,25 +86,4 @@ request.setCharacterEncoding("utf-8");
             }
         }
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>

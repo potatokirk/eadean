@@ -1,0 +1,115 @@
+
+ html,body { 
+/* 	background-color: #FAEBD7;   */
+  	margin-bottom: 200px;  
+ } 
+ 
+.form-structor {
+    padding: 50px;
+    margin: 90px auto;
+	height: 570px;
+	width: 540px;
+    content: '';
+    top: 100px;
+    bottom: 100px;
+	background-color: white;   
+}
+
+.txt{
+  border-bottom: 2px solid #adadad;
+  margin-top: 10px;
+  width: 77%;
+  position: relative;
+  margin: 10px;
+  margin-left: 50px;
+  padding: 7px 10px;
+}
+
+/* 인풋 텍스트 */
+     .inputtxt1{
+        background-color: #FDF5E6;
+        border:0;
+        width: 100%;
+        padding: 2px;
+       
+        margin-top: 5px;
+        &:focus {
+        color: #b17505;
+       
+        outline: none;
+        font-size: 1.2em;
+        transition: .8s all ease;
+
+    &::placeholder {
+        opacity: 0;
+      } 
+    }
+  } 
+      .inputtxt11:hover {
+          transition: all .3s ease;
+          background-color: #fffcf6;
+
+        } 
+
+     
+  .submit-btn {
+      height: 40px;
+        background-color: #FFA500;
+        color: rgba(256,256,256,0.7);
+        border:0;
+        border-radius: 8px;
+        display: block;
+        margin: 10px auto; 
+        margin-top: 40px;
+
+        padding: 5px 45px;
+        width: 77%;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: all .3s ease;
+
+        &:hover {
+          transition: all .3s ease;
+          background-color: #FFDBC1;
+        }
+      }
+    .cencle{
+      height: 30px;
+        background-color: #dec08a;
+        color: rgba(256,256,256,0.7);
+        border:0;
+        border-radius: 8px;
+        display: block;
+        margin: 7px auto; 
+        padding: 2px 45px;
+        width: 77%;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: all .3s ease;
+
+        &:hover {
+          transition: all .3s ease;
+          background-color: #FFDBC1;
+        }
+      }
+
+
+  
+  #signup{    
+     text-align: center;
+     margin-bottom: 40px;
+     color: #b17505;
+  }
+
+  .chk{
+    font-size: 5px;
+    color: #b17505;
+    padding-left: 55px;
+  }
+

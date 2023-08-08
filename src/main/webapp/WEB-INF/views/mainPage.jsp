@@ -11,7 +11,6 @@
 request.setCharacterEncoding("utf-8");
 %>
 <style>@import'../css/css_mainPage.css'</style>
-<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 <link rel="stylesheet"
 	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet"
@@ -23,8 +22,7 @@ request.setCharacterEncoding("utf-8");
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://kit.fontawesome.com/20962f3e4b.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/20962f3e4b.js"	crossorigin="anonymous"></script>
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script>
@@ -75,7 +73,11 @@ request.setCharacterEncoding("utf-8");
 </head>
 <body>
 	<div id="wrapper">
-		<header><%@include file="../views/header.jsp"%></header>
+		
+		<header>
+		<%@include file="../views/header.jsp"%>
+		</header>
+		
 		<main>
 			<aside>
 				<ul class="category">
@@ -791,7 +793,11 @@ request.setCharacterEncoding("utf-8");
 				</section>
 			</section>
 		</main>
-		<footer><%@include file="../views/footer.jsp"%></footer>
+	
+		<footer>
+		<%@include file="../views/footer.jsp"%>
+		</footer>
+	
 		<button type="button" id="top">상단이동</button>
 	</div>
 

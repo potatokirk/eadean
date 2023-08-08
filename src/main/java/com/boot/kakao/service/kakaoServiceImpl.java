@@ -178,7 +178,7 @@ public class kakaoServiceImpl implements kakaoService {
 	        System.out.println("S:" + result);
 	        
 	        if(result==null) {
-	        	
+	        	log.info("나와라 ");
 	        	mr.kakaoinsert(userInfo);
 	        	return mr.findkakao(userInfo);
 	        	
