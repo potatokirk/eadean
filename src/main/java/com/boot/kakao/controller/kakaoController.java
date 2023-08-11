@@ -66,6 +66,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 		session.invalidate();
 		session.setAttribute("u_id", userInfo.getU_id());
 		session.setAttribute("u_nick", userInfo.getU_nick());
+		session.setAttribute("u_gender", userInfo.getU_gender());
 		session.setAttribute("access_Token", access_Token);
 		session.setAttribute("u_role", userInfo.getU_role());
 		return "/";
@@ -77,7 +78,7 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 public String kakaoregisterOk(@RequestParam HashMap<String, String> param, HttpServletRequest request) {
 	log.info("@# kakaoSignUpOk");
 	service.kakaoSignUp(param);
-	return "redirect:/kakao/kakaoSignIn";
+	return "/";
 }
 
 //	카카오 로그아웃
@@ -85,7 +86,7 @@ public String kakaoregisterOk(@RequestParam HashMap<String, String> param, HttpS
 public String kakaologout(HttpSession session) {
 	service.kakaologout((String) session.getAttribute("access_Token"));
 	session.invalidate();
-	return "redirect:/admin/login_ok";
+	return "/";
 }
 
 //	카카오 회원 탈퇴 (연결 끊기)
@@ -96,7 +97,7 @@ public String unlink(HttpSession session, HashMap<String, String> param) {
 	System.out.println("kakaounlink@@@@@@@@@@===>" + ((String) session.getAttribute("access_Token")));
 	service.userDel(param);
 	session.invalidate();
-	return "redirect:/shop/list";
+	return "/";
 }
 
 }

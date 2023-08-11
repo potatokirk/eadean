@@ -44,7 +44,7 @@ public class adminController {
 	/********************* 일반 로그인 **************************/
 
 	@RequestMapping("/loginyn")
-	public ResponseEntity<Integer> loginyn(@RequestParam HashMap<String,String>param) {
+	public ResponseEntity<Integer> loginyn(@RequestParam HashMap<String,String>param, HttpSession session) {
 		log.info("@#loginyn"+param);
 		
 		ArrayList<adminDto> dtos = service.loginYn(param);
@@ -55,7 +55,10 @@ public class adminController {
 			return ResponseEntity.status(HttpStatus.OK).body(500); 
 		}else {
 			if(param.get("u_pwd").equals(dtos.get(0).getU_pwd())) {
-				
+				session.setAttribute("u_id",dtos.get(0).getU_id());
+				session.setAttribute("u_nick",dtos.get(0).getU_nick());
+			//	session.setAttribute("adminDto",dtos.get(0));
+				session.setMaxInactiveInterval(1800);
 				return ResponseEntity.status(HttpStatus.OK).body(200);
 			}else {
 				return ResponseEntity.status(HttpStatus.OK).body(400); 

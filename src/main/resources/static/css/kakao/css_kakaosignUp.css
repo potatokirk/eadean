@@ -27,7 +27,7 @@
 
 /* 인풋 텍스트 */
      .inputtxt1{
-        background-color: #FDF5E6;
+        background-color: #c8c8c8;
         border:0;
         width: 100%;
         padding: 2px;
@@ -54,7 +54,7 @@
      
   .submit-btn {
       height: 40px;
-        background-color: #FFA500;
+        background-color: #FFE650;
         color: rgba(256,256,256,0.7);
         border:0;
         border-radius: 8px;

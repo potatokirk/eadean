@@ -9,7 +9,7 @@
     </select> -->
     
     <select id="loginYn"  parameterType="hashmap" resultType="com.boot.users.dto.adminDto">
-		select u_pwd from users where u_id=#{u_id}
+		select u_id, u_pwd,u_nick from users where u_id=#{u_id}
 		</select>
     
     

@@ -79,7 +79,7 @@ $(document).ready(function(){
         </div>
 
       <div class="txt">
-        <input class="inputtxt1" type="text" size="20" name="u_nickname" id="u_nickname" placeholder="닉네임" required>
+        <input class="inputtxt1" type="text" size="20" name="u_nick" id="u_nickname" placeholder="닉네임" required>
       </div>
       <div class="chk">
         <span class="nick_ok">사용 가능한 닉네임입니다.</span>
@@ -87,11 +87,11 @@ $(document).ready(function(){
       </div>
 
       <div class="txt">
-        <input class="inputtxt1" type="text" size="12" name="u_phoneNum" required placeholder="폰번호  ('-'를 제외한 번호만 입력해주세요.)">
+        <input class="inputtxt1" type="text" size="12" name="u_phone" required placeholder="폰번호  (000-0000-00000)">
       </div>   
 
       <div class="txt">
-        <input class="inputtxt1" type="text" size="20" name="u_bank_account" required placeholder="계좌번호">
+        <input class="inputtxt1" type="text" size="20" name="u_address" required placeholder="주소입력">
       </div>
 
       <input type ='hidden' name='u_id' value="${u_id}">
