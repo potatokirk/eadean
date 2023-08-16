@@ -53,8 +53,7 @@
         SET
         u_email = #{u_email,jdbcType=VARCHAR},
         u_nick = #{u_nick,jdbcType=VARCHAR},
-        u_phone = #{u_phone,jdbcType=VARCHAR}
-        
+        u_phone = #{u_phone,jdbcType=VARCHAR}    
         WHERE u_id = #{u_id,jdbcType=VARCHAR}
     </update>
     

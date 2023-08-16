@@ -50,10 +50,10 @@ request.setCharacterEncoding("utf-8");
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${sessionScope.access_Token eq null }">
-								<a class="nav-link " href="../users/logout">로그아웃</a>
+								<a class="nav-link " href="/logout">로그아웃</a>
 							</c:when>
 							<c:otherwise>
-								<a class="nav-link " href="../kakao/kakaologout">로그아웃</a>
+								<a class="nav-link " href="/kakaologout">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>

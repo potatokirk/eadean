@@ -1,5 +1,6 @@
 package com.boot.kakao.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,14 +63,14 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 		return "/kakao/kakaoSignUp";
 
 	} else {
-		log.info("컨트롤 kakaoLogin else ");
+		log.info("컨트롤 kakaoLogin else "+userInfo);
 		session.invalidate();
 		session.setAttribute("u_id", userInfo.getU_id());
 		session.setAttribute("u_nick", userInfo.getU_nick());
-		session.setAttribute("u_gender", userInfo.getU_gender());
+	//	session.setAttribute("u_gender", userInfo.getU_gender());
 		session.setAttribute("access_Token", access_Token);
-		session.setAttribute("u_role", userInfo.getU_role());
-		return "/";
+		//session.setAttribute("u_role", userInfo.getU_role());
+		return "redirect:/";
 	}
 }
 
@@ -78,15 +79,17 @@ public String kakaoLogin(@RequestParam(value = "code", required = false) String 
 public String kakaoregisterOk(@RequestParam HashMap<String, String> param, HttpServletRequest request) {
 	log.info("@# kakaoSignUpOk");
 	service.kakaoSignUp(param);
-	return "/";
+	log.info("kakaoSignUpOk param값"+param);
+	return "/kakao/kakaoSignIn";
 }
 
 //	카카오 로그아웃
 @RequestMapping(value = "/kakaologout")
-public String kakaologout(HttpSession session) {
+public String kakaologout(HttpSession session){
+	log.info("카카오 로그아웃 :" +session);
 	service.kakaologout((String) session.getAttribute("access_Token"));
 	session.invalidate();
-	return "/";
+	return"redirect:/";
 }
 
 //	카카오 회원 탈퇴 (연결 끊기)
