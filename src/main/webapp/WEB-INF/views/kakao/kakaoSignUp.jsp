@@ -23,15 +23,15 @@ $(document).ready(function(){
 	       	$('.nick_ok').css("display", "none");
 	       	
 	       	
-	       	 $("#u_nickname").keyup(function() {
+	       	 $("#u_nick").keyup(function() {
 			   checkNickname="";
 // 			닉네임 중복확인
-	       	var nickname = $('#u_nickname').val();
+	       	var nickname = $('#u_nick').val();
 			$.ajax({
 				url : "nickChk",
 				type : "post",
 				dataType : "json",
-				data : {"u_nickname" : nickname},
+				data : {"u_nick" : nickname},
 				
 				success : function(data){
 					if(data == 0){

@@ -1,22 +1,26 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/signup.css" rel="stylesheet">
-    <script type="text/javascript" src="/js/member.js" charset="UTF-8"></script>
+    <%
+request.setCharacterEncoding("utf-8");
+%>
 </head>
 <body class="bg-light">
 <div class="bg-light">
+	  	 <header>
+		<%@include file="../header.jsp"%>
+		</header>
     <main>
         <div class="container">
+                <h1>회원가입</h1>
             <div class="py-5 text-center">
-                <img class="d-block mx-auto mb-4" src="/img/logo.png" alt="" width="72" height="72">
-                <h2>회원가입</h2>
             </div>
 
             <div class="row g-5">
@@ -25,59 +29,51 @@
                         <div class="row g-3">
                             <h4>기본 정보</h4>
                             <div class="col-sm-12">
-                                <label for="member_id" class="form-label">아이디</label>
+                            
+                                <label for="u_id" class="form-label" id=""></label>
+                                <label for="u_id" class="form-label">아이디</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="member_id" id="member_id" placeholder="아이디를 적어주세요." required minlength="4">
-                                    <div class="invalid-feedback">
-                                        부적절한 아이디입니다.
-                                    </div>
+                                    <input type="text" class="form-control" name="u_id" id="u_id" placeholder="아이디를 적어주세요." required minlength="4">
+                                   <input type="button" onclick="idchk()" value="중복확인">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="member_pwd" class="form-label">비밀번호</label>
+                                <label for="u_pwd" class="form-label">비밀번호</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="member_pwd" id="member_pwd" placeholder="이름을 적어주세요." required>
-                                    <div class="invalid-feedback">
-                                        부적합한 비밀번호입니다.
-                                    </div>
+                                    <input type="text" class="form-control" name="u_pwd" id="u_pwd" placeholder="이름을 적어주세요." required>
+                                  
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="member_pwd_cnf" class="form-label">비밀번호 확인</label>
+                                <label for="u_pwd_cnf" class="form-label">비밀번호 확인</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="member_pwd_cnf" id="member_pwd_cnf" placeholder="이름을 적어주세요." required>
-                                    <div class="invalid-feedback">
-                                        비밀번호가 동일하지 않습니다.
-                                    </div>
+                                    <input type="text" class="form-control" name="u_pwd_cnf" id="u_pwd_cnf" placeholder="이름을 적어주세요." required>
+                                   
                                 </div>
                             </div>
 
                             <div class="col-sm-12">
-                                <label for="member_name" class="form-label">이름</label>
+                                <label for="u_name" class="form-label">이름</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="member_name" id="member_name" placeholder="이름을 적어주세요." required>
-                                    <div class="invalid-feedback">
-                                        부적절한 이름입니다.
-                                    </div>
+                                    <input type="text" class="form-control" name="u_name" id="u_name" placeholder="이름을 적어주세요." required>
+                                    
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <label for="member_phone" class="form-label">전화번호</label>
+                                <label for="u_phone" class="form-label">전화번호</label>
                                 <div class="input-group has-validation">
-                                    <input type="tel" class="form-control" maxlength="12" name="member_phone" id="member_phone" required placeholder="'-'를 제외한 번호만 입력해주세요.">
+                                    <input type="tel" class="form-control" maxlength="12" name="ur_phone" id="u_phone" required placeholder="'-'를 제외한 번호만 입력해주세요.">
                                 </div>
                             </div>
 
 
                             <div class="col-12">
-                                <label for="member_email" class="form-label">이메일</label>
-                                <input type="email" class="form-control" name="member_email" id="member_email" placeholder="이메일을 적어주세요." required>
-                                <div class="invalid-feedback">
-                                    이메일을 형식에 맞게 적어주세요.
-                                </div>
+                                <label for="u_email" class="form-label">이메일</label>
+                                <input type="email" class="form-control" name="u_email" id="u_email" placeholder="이메일을 적어주세요." required>
+                               
                             </div>
 
                             <div class="col-md-4">
@@ -86,9 +82,7 @@
                                     <input type="text" class="form-control" name="member_postcode" id="member_postcode" placeholder="우편번호" readonly required>
                                     <input type="button" class="btn btn-secondary" onclick="execDaumPostcode()" value="우편번호 찾기"></input>
                                 </div>
-                                <div class="invalid-feedback">
-                                    우편번호는 필수입니다.
-                                </div>
+                              
                             </div>
 
                             <div id="wrap" style="display:none;border:1px solid;width:100%;height:400px;margin:5px 0;position:relative">
@@ -96,11 +90,9 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="member_address" class="form-label">주소</label>
-                                <input type="text" class="form-control" name="member_address" id="member_address" placeholder="도로명주소" readonly required>
-                                <div class="invalid-feedback">
-                                    올바른 주소를 입력하세요.
-                                </div>
+                                <label for="u_address" class="form-label">주소</label>
+                                <input type="text" class="form-control" name="u_address" id="u_address" placeholder="도로명주소" readonly required>
+                               
                             </div>
 
                             <div class="col-md-6">
@@ -125,15 +117,37 @@
     </main>
 </div>
 
-<footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; GREENBOOK</p>
-    <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Home</a></li>
-        <li class="list-inline-item"><a href="#">Login</a></li>
-    </ul>
-</footer>
+		<footer>
+		<%@include file="../footer.jsp"%>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script>
+	function idchk(){
+	 var u_id = $("#u_id").val();
+	 var resultLabel = $("#passwordMatchLabel");
+	 resultLabel.text("Passwords match");
+	 resultLabel.css("color", "green");
+	 $.ajax({
+	      type: 'POST', // HTTP 요청 방식 설정 (GET 또는 POST)
+	      url: 'idChk', // 요청을 보낼 URL
+	      data: { u_id: u_id}, // 전송할 데이터 설정
+	      success: function(response) {
+	    if(response ===1){
+	    	
+	    }
+	      },
+	      error: function() {
+	        $('#result').html('에러가 발생했습니다.'); // 에러 시 처리
+	      }
+	    });
+	 
+	 
+	}
+		</script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	
+
     // 우편번호 찾기 찾기 화면을 넣을 element
     var element_wrap = document.getElementById('wrap');
     function foldDaumPostcode() {
@@ -178,7 +192,7 @@
                 }
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('member_postcode').value = data.zonecode;
-                document.getElementById("member_address").value = addr;
+                document.getElementById("u_address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("member_detailAddress").focus();
                 // iframe을 넣은 element를 안보이게 한다.
@@ -198,6 +212,5 @@
         element_wrap.style.display = 'block';
     }
 </script>
-<script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

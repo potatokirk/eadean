@@ -12,6 +12,7 @@ request.setCharacterEncoding("utf-8");
 
 </head>
 <body>
+<div>
 <footer>
 			<ul>
 				<li><a href="#">회사소개</a></li>
@@ -23,17 +24,27 @@ request.setCharacterEncoding("utf-8");
 				<p>
 					<img src="./images/main.png" alt="푸터로고" width="220" height="75">
 				</p>
-				<p>
-					<strong>(주)EADEAN</strong> <br> 부산시 수영구 어딘가의 어딘가 <br>
-					대표이사 : 박기태 <br> 사업자등록번호 : <br> 통신판매업신고 :
+				<p  style='line-height : 20px'>
+					<strong>(주)EADEAN</strong> <br>
+					$
+					 부산시 수영구 어딘가의 어딘가 <br>
+					대표이사 : 박기태 <br>
+					 사업자등록번호 : <br>
+					  통신판매업신고 :
 				</p>
-				<p>
-					<strong>고객센터</strong> <br> Tel : 1234-5678 (평일 09:00~18:00) <br>
-					스마일클럽/SVIP 전용 : 1522-5700 (365일 09:00~18:00) <br> 부산광역시 부산진구
-					중앙대로 712 수양빌딩 8층 <br> Fax : 051-123-4567 | Mail :
-					rlxoa456@hanmail.net <br>
+				<p  style='line-height : 20px'>
+					<strong>고객센터</strong> <br>
+					 Tel : 1234-5678 (평일 09:00~18:00) <br>
+					 &nbsp;
+					스마일클럽/SVIP 전용 : 1522-5700 (365일 09:00~18:00) <br>
+					&nbsp;
+					 부산광역시 부산진구	중앙대로 712 수양빌딩 8층 <br> 
+					&nbsp;
+					Fax : 051-123-4567 | Mail :	rlxoa456@hanmail.net <br>
+			    	&nbsp;
 				</p>
 			</div>
 		</footer>
+		</div>
 </body>
 </html>

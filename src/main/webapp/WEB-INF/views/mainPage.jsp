@@ -131,7 +131,7 @@ request.setCharacterEncoding("utf-8");
 								<div class="thumb">
 									<i>1</i> <img src="https://via.placeholder.com/230" alt="item1">
 								</div>
-								<h2>상품명</h2>
+								<h2>상품명Test</h2>
 								<div class="org_price">
 									<del>30,000</del>
 									<span> 10% </span>
@@ -231,11 +231,11 @@ request.setCharacterEncoding("utf-8");
 						<span>히트상품</span>
 					</h3>
 					<article>
-						<a href="#">
+						<a href="productList">
 							<div class="thumb">
 								<img src="https://via.placeholder.com/230X230" alt="t1">
 							</div>
-							<h2>상품명</h2>
+							<h2>상품명Test</h2>
 							<p>간단한 상품 설명</p>
 							<div class="org_price">
 								<del>30,000</del>
@@ -367,6 +367,7 @@ request.setCharacterEncoding("utf-8");
 						</a>
 					</article>
 				</section>
+				
 				<!-- 추천상품 영역 -->
 				<section class="recommend">
 					<h3>

@@ -62,8 +62,10 @@ request.setCharacterEncoding("utf-8");
 
 
 
-				<a href="">회원가입</a> <a href="">마이페이지</a> <a href=""> <i
-					class="fa fa-shopping-cart" aria-hidden="true"></i> 장바구니
+				<a href="signup">회원가입</a> 
+				<a href="">마이페이지</a> 
+				<a href="">
+				 <i class="fa fa-shopping-cart" aria-hidden="true"></i> 장바구니
 				</a>
 			</div>
 		</div>

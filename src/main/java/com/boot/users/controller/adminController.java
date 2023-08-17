@@ -72,10 +72,10 @@ public class adminController {
 		return "admin/login_ok";
 	}
 	/********************* 화원등록 **************************/
-	@RequestMapping("/register")
+	@RequestMapping("/signup")
 	public String register() {
-		log.info("@#register");
-		return "admin/register";
+		log.info("@#signup");
+		return "kakao/signup";
 		
 	}
 
@@ -98,13 +98,17 @@ public String logout(HttpSession session) {
 
 //닉네임 중복 체크
 @RequestMapping("nickChk")
-public @ResponseBody int nickChk(@RequestParam("u_nickname") String u_nick){
+public @ResponseBody String nickChk(@RequestParam("u_nick") String u_nick){
 	return service.nickChk(u_nick);
 }
 //아이디 중복 체크
 @RequestMapping("idChk")
-public @ResponseBody int idChk(@RequestParam("u_sns_id") String u_sns_id) {
-return service.idChk(u_sns_id);
+public @ResponseBody int idChk(@RequestParam("u_id") String u_id) {
+  if(service.idChk(u_id)==null) {
+	  return 1;
+  }else {
+	  return 0;
+  }
 }
 
 //일반 회원가입 로직

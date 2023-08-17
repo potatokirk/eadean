@@ -42,13 +42,13 @@ public class adminServiceImpl implements adminService{
 	}
 //아이디 찾기 :회원가입시 
 	@Override
-	public int idChk(String u_sns_id) {
+	public String idChk(String u_sns_id) {
 		adminDao dao = sqlSession.getMapper(adminDao.class);
 		return dao.idChk(u_sns_id);
 	}
 //닉네임 중복 확인 
 	@Override
-	public int nickChk(String u_nick) {
+	public String nickChk(String u_nick) {
 		adminDao dao = sqlSession.getMapper(adminDao.class);
 		return dao.nickChk(u_nick);
 	}
