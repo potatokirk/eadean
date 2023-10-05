@@ -35,13 +35,13 @@ request.setCharacterEncoding("utf-8");
 				<p  style='line-height : 20px'>
 					<strong>고객센터</strong> <br>
 					 Tel : 1234-5678 (평일 09:00~18:00) <br>
-					 &nbsp;
+					
 					스마일클럽/SVIP 전용 : 1522-5700 (365일 09:00~18:00) <br>
-					&nbsp;
+			
 					 부산광역시 부산진구	중앙대로 712 수양빌딩 8층 <br> 
-					&nbsp;
+					
 					Fax : 051-123-4567 | Mail :	rlxoa456@hanmail.net <br>
-			    	&nbsp;
+			    	
 				</p>
 			</div>
 		</footer>

@@ -91,24 +91,24 @@ public class adminController {
 /********************* 로그아웃 **************************/
 @RequestMapping("/logout")
 public String logout(HttpSession session) {
-	log.info("@#logout session" + session);
+	log.info("@#일반 로그아웃 " + session);
 	service.logout(session);
-	return "/";
+	return "redirect:/";
+}
+//아이디 중복 체크
+@RequestMapping("idChk")
+public @ResponseBody int idChk(@RequestParam("u_id") String u_id) {
+	if(service.idChk(u_id)==null) {
+		return 1;
+	}else {
+		return 0;
+	}
 }
 
 //닉네임 중복 체크
 @RequestMapping("nickChk")
 public @ResponseBody String nickChk(@RequestParam("u_nick") String u_nick){
 	return service.nickChk(u_nick);
-}
-//아이디 중복 체크
-@RequestMapping("idChk")
-public @ResponseBody int idChk(@RequestParam("u_id") String u_id) {
-  if(service.idChk(u_id)==null) {
-	  return 1;
-  }else {
-	  return 0;
-  }
 }
 
 //일반 회원가입 로직

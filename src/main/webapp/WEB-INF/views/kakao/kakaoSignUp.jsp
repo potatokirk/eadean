@@ -25,6 +25,7 @@ $(document).ready(function(){
 	       	
 	       	 $("#u_nick").keyup(function() {
 			   checkNickname="";
+			   
 // 			닉네임 중복확인
 	       	var nickname = $('#u_nick').val();
 			$.ajax({
@@ -52,7 +53,7 @@ $(document).ready(function(){
 		});//end of keyup
 			
 			$("#kakaoRegisterForm").submit(function(){
-					if(checkNickname == ""){
+					if(checkNickname == "u_nick"){
 						alert("중복된 닉네임이 존재합니다.");
 					return false;
 			}
@@ -79,12 +80,15 @@ $(document).ready(function(){
         </div>
 
       <div class="txt">
-        <input class="inputtxt1" type="text" size="20" name="u_nick" id="u_nickname" placeholder="닉네임" required>
+        <input class="inputtxt1" type="text" size="20" name="u_nick" id="u_nickname" placeholder="닉네임">
       </div>
+
+<!--  
       <div class="chk">
         <span class="nick_ok">사용 가능한 닉네임입니다.</span>
         <span class="nick_already">중복된 닉네임입니다.</span>
       </div>
+-->
 
       <div class="txt">
         <input class="inputtxt1" type="text" size="12" name="u_phone" required placeholder="폰번호  (000-0000-00000)">
